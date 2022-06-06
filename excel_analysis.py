@@ -64,36 +64,54 @@ for subtable in psp_subtables[1:]:
     else:
         subtable.columns = ['2013a', '2013b', '2014a', '2014b', '2015a',' 2015b', '2016a', '2016b', '2017a', '2017b']
 
+#filter 24 hrs and filter on_call as well as admissions numbers
+#TODO ? MAYBE: this may be unnesscary or detrimental. If so, come back to this
+avail_24hr_df = data.filter(regex = r"(AVAIL24HRS|_adm)")
+avail_24hr_df.dropna(how='all', axis=1, inplace=True)
+avail_24hr_df.dropna(how='all', axis=0, inplace=True)
+avail_on_call_df = data.filter(regex = r"(AVAIL_ON_CALL|_adm)")
+avail_on_call_df.dropna(how='all', axis=1, inplace=True)
+avail_on_call_df.dropna(how='all', axis=0, inplace=True)
+pure_adm_df = data.filter(regex="_adm")
+
+print(pure_adm_df)
+print("admissions above")
+
+####BEGIN ANALYSIS
+#TODO WE want to turn the series of columns ending in _adm into plots that we can put on a report
+
+#pseudo:
+#for each yes to in avail_24hr and avail_on_cal, we need to create a graph
+#   in each graph, one axis reflects the year, the other the admissions
+#We can then plot these graphs and put them on a report
+#
+#better pseudo
+#for each table:
+#   for each column:
+#       for each 'YES':
+#           plot associated admisions 
+#
+#-in report, compare-
+
+list24hrs = ['ED_ANESTH_AVAIL24HRS', 'ED_LAB_SVCS_AVAIL24HRS', 'ED_OP_RM_AVAIL24HRS', 'ED_PHARM_AVAIL24HRS', 'ED_PHYSN_AVAIL24HRS',
+'ED_PSYCH_ER_AVAIL24HRS', 'ED_RADIOL_SVCS_AVAIL24HRS']
+
+listoncall = ['ED_ANESTH_AVAIL_ON_CALL', 'ED_LAB_SVCS_AVAIL_ON_CALL', 'ED_OP_RM_AVAIL_ON_CALL', 'ED_PHARM_AVAIL_ON_CALL', 'ED_PHYSN_AVAIL_ON_CALL', 'ED_PSYCH_ER_AVAIL_ON_CALL', 'ED_RADIOL_SVCS_AVAIL_ON_CALL']
+
+print(avail_on_call_df.iloc[:0])
+
+#EMS_VISITS_NON_URGENT_NOT_adm, EMS_VISITS_NON_URGENT_adm, 
+#EMS_VISITS_URGENT_NOT_adm, EMS_VISITS_URGENT_adm, EMS_VISITS_MODERATE_NOT_adm, EMS_VISITS_MODERATE_adm, 
+#EMS_VISITS_SEVERE_NOT_adm, EMS_VISITS_SEVERE_adm, EMS_VISITS_CRITICAL_NOT_adm, EMS_VISITS_CRITICAL_adm
+
+#this format prints only the admissions for a certain condition being equivalent to yes
+#print(avail_24hr_df[avail_24hr_df['ED_ANESTH_AVAIL24HRS'] == 'YES'].filter(regex = "_adm"))
 
 
 
-'''
-#print information
-for subtable in psp_subtables:
-    print("---------------------------------------------------------------------------")
-    print(subtable)
-    print("---------------------------------------------------------------------------")
-print(data)
-'''
-'''
-avail_24hrs = "AVAIL24HRS"
-avail_on_call = "AVAIL_ON_CALL"
-
-#for every column_name
-for column_name in data.iloc[:0]:
-    #if suffix is AVAIL24HRS
-    if column_name[-1*len(avail_24hrs):]:
-        #TODO commit to 24hr dataframe
-        pass
-    #if suffix is AVAIL_ON_CALL
-    elif column_name[-1*len(avail_24hrs):]:
-        #TODO commit to avail_on_call dataframe
-        pass
-    else:
-'''
 
 
-#print(psp_ambulance_diversion_hours)
+######PERFORMANCE --- SHOW RUNNING TIME
 end = time() - start
 print("this program took this amount of time in seconds:")
 print(end)
