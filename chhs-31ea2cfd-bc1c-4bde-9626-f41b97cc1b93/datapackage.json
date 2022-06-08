@@ -1,0 +1,59 @@
+{
+  "accrual_periodicity": "annually",
+  "additional_limitations": "",
+  "citation": "",
+  "contact_email": "opendata@hcai.ca.gov",
+  "data_collection_tool": "https://lfis.hcai.ca.gov",
+  "data_license": "Terms of Use",
+  "de_identification_method": "https://chhsdata.github.io/dataplaybook/resource_library/#datade-id",
+  "description": "This dataset contains emergency department services utilization data from the Annual Utilization Report of Hospitals dataset.  The summary data includes emergency department level, visits by acuity, available services, and ambulance diversion hours.  ",
+  "geo_coverage": "Statewide",
+  "geographic_granularity": "location point",
+  "keywords": [
+    "ED",
+    "EMSA",
+    "Emergency Department",
+    "acuity",
+    "ambulance diversion",
+    "department of health care access and information",
+    "hcai",
+    "hospital",
+    "trauma"
+  ],
+  "limitations": "Limitations",
+  "name": "emergency-department-services-trends",
+  "program_web_page": "https://www.hcai.ca.gov",
+  "related_resources": "",
+  "resources": [
+    {
+      "description": "This pivot profile contains emergency department services summary data from the Annual Utilization Report of Hospitals datasets.",
+      "format": "XLSX",
+      "hash": "c6d61fd8914b056ed605b5ac788bbb69",
+      "name": "emergency-department-services-trends-2013-2017",
+      "path": "emergency-department-services-trends-2013-2017.xlsx",
+      "schema": {
+        "fields": [
+          {
+            "name": "Emergency Department Trends Pivot Table Glossary",
+            "type": "string"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "path": "https://data.chhs.ca.gov/dataset/31ea2cfd-bc1c-4bde-9626-f41b97cc1b93/resource/a05be197-1cea-4685-9dfd-0afc7712f81f/download/ed_ut2013_2017_20181030.xlsx",
+          "title": "Emergency Department Services Trends, 2013-2017 "
+        }
+      ],
+      "title": "Emergency Department Services Trends, 2013-2017 "
+    }
+  ],
+  "secondary_sources": "",
+  "sources": [
+    {
+      "name": "Department of Health Care Access and Information, Healthcare Analytics Branch"
+    }
+  ],
+  "temporal_coverage": "Five most recent years",
+  "title": "Emergency Department Services Trends"
+}
